@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Contact Form — Ananth Ram</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Ananth Ram" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <div class="brand small-brand">
+        <div>
+          <h1>Ananth Ram</h1>
+          <p class="title small">Software Developer</p>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="form.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card form-card">
+      <h2>Contact Form</h2>
+      <form id="labForm" action="#" method="POST" novalidate>
+        <div class="form-row">
+          <label for="firstName">First name:</label>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+
+        <div class="form-row">
+          <label for="lastName">Last name:</label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+
+        <div class="form-row">
+          <p>Which language do you is the hardest?</p>
+          <label><input type="radio" name="language" value="js" checked /> HTML</label>
+          <label><input type="radio" name="language" value="python" /> CSS</label>
+          <label><input type="radio" name="language" value="java" /> JavaScript</label>
+        </div>
+
+        <div class="form-row">
+          <p>Vehicles you own:</p>
+          <label><input type="checkbox" name="vehicle" value="car" /> Car</label>
+          <label><input type="checkbox" name="vehicle" value="bike" /> Bike</label>
+          <label><input type="checkbox" name="vehicle" value="none" /> None</label>
+        </div>
+
+        <div class="form-row">
+          <label for="brand">Car brand:</label>
+          <select id="brand" name="brand">
+            <option value="">-- Choose brand --</option>
+            <option value="toyota">Toyota</option>
+            <option value="ford">Ford</option>
+            <option value="honda">Honda</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <div class="form-row">
+          <button type="submit" class="btn">Submit form</button>
+        </div>
+      </form>
+
+      <p id="formResponse" class="form-response" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Ananth Ram</p>
+  </footer>
+
+  <script>
+    document.getElementById('labForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const fname = document.getElementById('firstName').value.trim();
+      const lname = document.getElementById('lastName').value.trim();
+      const email = ''; 
+      const response = document.getElementById('formResponse');
+
+      if (!fname || !lname) {
+        response.textContent = 'Please fill out your name fields.';
+        response.style.color = 'crimson';
+        return;
+      }
+
+      response.textContent = `Thanks ${fname} ${lname}! Your form has been received.`;
+      response.style.color = 'green';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
